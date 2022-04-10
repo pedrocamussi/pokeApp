@@ -1,5 +1,5 @@
 import Reactotron from 'reactotron-react-native';
-//import sagaPlugin from 'reactotron-redux-saga';
+import sagaPlugin from 'reactotron-redux-saga';
 import {reactotronRedux} from 'reactotron-redux';
 import {NativeModules} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -23,7 +23,7 @@ if (__DEV__) {
       overlay: false,
     })
     .use(reactotronRedux()).setAsyncStorageHandler!(AsyncStorage)
-    //.use(sagaPlugin({}))
+    .use(sagaPlugin({}))
     .connect();
 
   tron.clear!();

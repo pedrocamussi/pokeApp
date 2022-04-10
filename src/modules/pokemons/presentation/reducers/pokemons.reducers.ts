@@ -38,3 +38,4 @@ const pokemonsSlice = createSlice({
 });
 
 export default pokemonsSlice.reducer;
+export const PokemonActions = pokemonsSlice.actions;
