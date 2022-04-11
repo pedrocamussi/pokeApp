@@ -4,13 +4,10 @@
   "private": true,
   "husky": {
     "hooks": {
-      "commit": "cz",
-      // "pre-commit": "lint-staged --allow-empty && yarn test:changed",
-      "pre-commit": "echo 'eae'",
-
-      // "pre-push": "yarn test",
-      // "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      // "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
+      "pre-commit": "lint-staged --allow-empty && yarn test:changed",
+      "pre-push": "yarn test",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
     }
   },
   "scripts": {
@@ -41,7 +38,7 @@
     "@types/react-native": "^0.67.3",
     "babel-jest": "^26.6.3",
     "commitizen": "^4.2.4",
-    "cz-conventional-changelog": "^3.3.0",
+    "cz-conventional-changelog": "3.3.0",
     "eslint": "^7.32.0",
     "husky": "^7.0.4",
     "jest": "^26.6.3",
