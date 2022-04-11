@@ -4,9 +4,9 @@
   "private": true,
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged --allow-empty",
+      "pre-commit": "echo eae",
       "pre-push": "yarn test",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "commit-msg":  "echo eae2",
       "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
     }
   },
