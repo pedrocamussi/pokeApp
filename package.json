@@ -4,24 +4,37 @@
   "private": true,
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged --allow-empty && yarn test:changed",
+      "pre-commit": "lint-staged --allow-empty",
       "pre-push": "yarn test",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true",
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
     }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix --quiet"
+    ]
+  },
+  "engines": {
+    "node": ">=16.2.0"
   },
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint .",
-    "commit": "git-cz"
+    "lint": "eslint ."
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.17.3",
     "@reduxjs/toolkit": "^1.8.1",
+    "eslint-import-resolver-typescript": "^2.7.1",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react-native-a11y": "^3.2.1",
     "git": "^0.1.5",
+    "husky": "4.3.8",
+    "prettier": "^2.6.2",
     "react": "17.0.2",
     "react-native": "0.68.0",
     "react-redux": "^7.2.8",
@@ -40,7 +53,6 @@
     "commitizen": "^4.2.4",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "^7.32.0",
-    "husky": "^7.0.4",
     "jest": "^26.6.3",
     "lint-staged": "^12.3.7",
     "metro-react-native-babel-preset": "^0.67.0",
