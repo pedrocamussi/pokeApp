@@ -21,11 +21,33 @@ const pokemonsSlice = createSlice({
 			{ payload }: PayloadAction<{ pokemon: Pokemon }>,
 		) => {
 			const { pokemon } = payload;
-			state.loading = true;
+			state.loading = false;
 			state.error = false;
 			state.pokemons = [pokemon];
 		},
 		getPokemonFailed: (
+			state,
+			{ payload }: PayloadAction<{ errorDesc: string }>,
+		) => {
+			const { errorDesc } = payload;
+			state.loading = false;
+			state.error = true;
+			state.errorDesc = errorDesc;
+		},
+		getPokemons: state => {
+			state.loading = true;
+			state.error = false;
+		},
+		getPokemonsSuccess: (
+			state,
+			{ payload }: PayloadAction<{ pokemons: Pokemon[] }>,
+		) => {
+			const { pokemons } = payload;
+			state.loading = false;
+			state.error = false;
+			state.pokemons = pokemons;
+		},
+		getPokemonsFailed: (
 			state,
 			{ payload }: PayloadAction<{ errorDesc: string }>,
 		) => {

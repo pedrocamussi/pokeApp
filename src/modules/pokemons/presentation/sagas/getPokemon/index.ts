@@ -1,5 +1,5 @@
 import { put } from 'redux-saga/effects';
-import { PokemonActions } from '../reducers/pokemons.reducers';
+import { PokemonActions } from '../../reducers/pokemons.reducers';
 
 export function* getPokemon({ payload: { pokemonId } }): any {
 	console.tron.log('getPokemon', pokemonId);
