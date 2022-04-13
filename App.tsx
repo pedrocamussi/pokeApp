@@ -5,11 +5,7 @@ import { PokemonActions } from './src/modules/pokemons/presentation/reducers/pok
 import Home from './src/modules/pokemons/presentation/screens/home';
 
 const App = () => {
-	return (
-		<View>
-			<Home />
-		</View>
-	);
+	return <Home />;
 };
 
 export default App;

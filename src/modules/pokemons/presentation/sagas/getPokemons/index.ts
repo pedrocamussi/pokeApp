@@ -6,11 +6,14 @@ export function* getPokemons(): any {
 	try {
 		const pokemonService = PokemonService.getInstance();
 		const response = yield pokemonService.getPokemonsService();
-		console.tron.log('response', { response });
-		yield put(
-			PokemonActions.getPokemonsSuccess({ pokemons: [{ name: 'camussi' }] }),
-		);
+		const pokemonDetailsResponse = yield response
+			.slice(0, 15)
+			.map(async pokemon => {
+				return await pokemonService.getPokemonIdService({ name: pokemon.name });
+			});
+		console.tron.log('pokemonDetailsResponse', pokemonDetailsResponse);
+		yield put(PokemonActions.getPokemonsSuccess({ pokemons: response }));
 	} catch (e) {
-		console.tron.log('Error', { error: e.message });
+		yield put(PokemonActions.getPokemonsFailed({ errorDesc: e.message }));
 	}
 }
