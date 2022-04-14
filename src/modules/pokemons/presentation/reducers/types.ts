@@ -3,6 +3,9 @@ export interface initialStateType {
 	loading: boolean;
 	error: boolean;
 	errorDesc: string;
+	page: number;
+	canLoadMore: boolean;
+	limit: number;
 }
 export interface Pokemon {
 	id: number;

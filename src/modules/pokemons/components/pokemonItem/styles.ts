@@ -5,15 +5,14 @@ import { Image } from 'react-native';
 // const height = Dimensions.get('screen').height;
 
 export const Container = styled.View`
-	width: 80px;
-	height: 50px;
+	width: 150px;
+	height: 100px;
 `;
 
 export const PokemonTitle = styled.Text`
 	color: #000;
 `;
-export const PokemonImg = styled.Image`
-	width: 80px;
-	height: 50px;
-	border-radius: 10px;
+export const PokemonImg = styled(Image)`
+	width: 50px;
+	height: 40px;
 `;

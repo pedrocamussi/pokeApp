@@ -1,32 +1,68 @@
 import React, { useEffect } from 'react';
-import { Text, View } from 'react-native';
+import { RefreshControl, Text, View } from 'react-native';
 import { Container, PokemonsList } from './styles';
-import PokemonItem from '../../../components/pokemonItem';
+import PokemonItem from '../../../components/PokemonItem';
+import LoadingIndicator from '../../../components/LoadingCover';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { PokemonActions } from '../../reducers/pokemons.reducers';
-import { getPokemons } from '../../selectors/selector.pokemon';
+import {
+	getPokemons,
+	getPokemonsLoading,
+	getPokemonsPageAndLimit,
+} from '../../selectors/selector.pokemon';
 import { Pokemon } from '../../reducers/types';
 
 const App = () => {
 	const dispatch = useDispatch();
 	const pokemons: Pokemon[] = useSelector(getPokemons);
+	const loadingPokemons = useSelector(getPokemonsLoading);
+
+	const { canLoadMore } = useSelector(getPokemonsPageAndLimit);
 
 	useEffect(() => {
-		dispatch(PokemonActions.getPokemons());
+		getPokemonsData(true);
 	}, []); //array de dependência, td q tiver dentro, forçará novamente o useEffect
 
-	const renderPokemonItem = ({ item }: Pokemon) => {
-		return <PokemonItem name={item.name} url={item.url} id={item?.id} />;
+	const getPokemonsData = (reset = false) => {
+		dispatch(PokemonActions.getPokemons({ reset: reset }));
 	};
 
-	return (
-		<Container>
+	const renderPokemonItem = ({ item, index }: Pokemon) => {
+		return <PokemonItem name={item.name} url={item.img} id={item?.id} />;
+	};
+
+	const onEndReachedPokemons = () => {
+		if (canLoadMore) {
+			getPokemonsData(false);
+		}
+	};
+
+	const renderList = () => {
+		if (!pokemons.length) return <></>;
+		return (
 			<PokemonsList
 				data={pokemons}
 				renderItem={renderPokemonItem}
 				keyExtractor={(item: Pokemon) => item.name}
-				column={3}
+				onEndReached={onEndReachedPokemons}
+				onEndReachedThreshold={0.3}
+				refreshControl={
+					<RefreshControl
+						colors={['blue']}
+						tintColor={'blue'}
+						refreshing={false}
+						onRefresh={() => getPokemonsData(true)}
+					/>
+				}
 			/>
+		);
+	};
+
+	return (
+		<Container>
+			{renderList()}
+			<LoadingIndicator isVisible={loadingPokemons} />
 		</Container>
 	);
 };

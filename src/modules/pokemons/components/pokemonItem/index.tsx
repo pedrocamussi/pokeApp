@@ -11,7 +11,7 @@ const PokemonItem: React.FC<PokemonItemProps> = ({ name, url }) => {
 	return (
 		<Container>
 			<PokemonTitle>{name}</PokemonTitle>
-			<PokemonImg source={url} />
+			<PokemonImg source={{ uri: url }} />
 		</Container>
 	);
 };

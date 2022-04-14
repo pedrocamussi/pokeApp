@@ -9,9 +9,10 @@ export const getPokemons = createSelector(pokemons, state => state.pokemons);
 // 	return state.pokemons;
 // };
 
-export const getPokemonsLoading = (state: initialStateType) => {
-	return state.loading;
-};
+export const getPokemonsLoading = createSelector(
+	pokemons,
+	state => state.loading,
+);
 
 export const getPokemonsError = (state: initialStateType) => {
 	return state.error;
@@ -26,3 +27,11 @@ export const getPokemonId = (pokemonId: number) =>
 		if (pokemonFiltered?.length) return pokemonFiltered[0];
 		return null;
 	});
+
+export const getPokemonsPageAndLimit = createSelector(pokemons, state => {
+	return {
+		page: state?.page,
+		limit: state?.limit,
+		canLoadMore: state?.canLoadMore,
+	};
+});

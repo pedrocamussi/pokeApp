@@ -6,6 +6,9 @@ const initialState: initialStateType = {
 	loading: false,
 	error: false,
 	errorDesc: '',
+	canLoadMore: false,
+	page: 0,
+	limit: 20,
 };
 
 const pokemonsSlice = createSlice({
@@ -18,12 +21,9 @@ const pokemonsSlice = createSlice({
 		},
 		getPokemonSuccess: (
 			state,
-			{ payload }: PayloadAction<{ pokemon: Pokemon }>,
+			{ payload }: PayloadAction<{ page: number; pokemons: Pokemon[] }>,
 		) => {
-			const { pokemon } = payload;
 			state.loading = false;
-			state.error = false;
-			state.pokemons = [pokemon];
 		},
 		getPokemonFailed: (
 			state,
@@ -34,18 +34,23 @@ const pokemonsSlice = createSlice({
 			state.error = true;
 			state.errorDesc = errorDesc;
 		},
-		getPokemons: state => {
+		getPokemons: (state, _: PayloadAction<{ reset: boolean }>) => {
 			state.loading = true;
 			state.error = false;
 		},
 		getPokemonsSuccess: (
 			state,
-			{ payload }: PayloadAction<{ pokemons: Pokemon[] }>,
+			{ payload }: PayloadAction<{ pokemons: Pokemon[]; page: number }>,
 		) => {
-			const { pokemons } = payload;
 			state.loading = false;
 			state.error = false;
-			state.pokemons = pokemons;
+			state.page = payload.page;
+			state.pokemons = [...state.pokemons, ...payload.pokemons];
+			if (state.pokemons.length < state.page * state.limit) {
+				state.canLoadMore = false;
+			} else {
+				state.canLoadMore = true;
+			}
 		},
 		getPokemonsFailed: (
 			state,
@@ -55,6 +60,13 @@ const pokemonsSlice = createSlice({
 			state.loading = false;
 			state.error = true;
 			state.errorDesc = errorDesc;
+		},
+		clearPokemons: state => {
+			state.pokemons = [];
+		},
+		getPokemonsStop: state => {
+			state.loading = false;
+			state.error = false;
 		},
 	},
 });

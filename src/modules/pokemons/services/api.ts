@@ -16,8 +16,11 @@ export default class PokemonsApi {
 			},
 		});
 	}
-	async getPokemons(): Promise<AxiosResponse<PokemonsResponse>> {
-		return await this.instance.get('/pokemon?limit=2000&offset=0');
+	async getPokemons(params): Promise<AxiosResponse<PokemonsResponse>> {
+		const offset = params.limit * params.page;
+		return await this.instance.get(
+			`/pokemon?limit=${params.limit}&offset=${offset}`,
+		);
 	}
 
 	async getPokemonId(

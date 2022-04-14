@@ -3,8 +3,9 @@ export interface PokemonsResponse {
 	results: PokemonResponseItem[];
 }
 export interface PokemonResponseItem {
+	id: number;
 	name: string;
-	url: string;
+	img: string;
 }
 export interface PokemonResponseDetailItem {
 	sprites: any;
