@@ -2,14 +2,10 @@
   "name": "pokeApp",
   "version": "0.0.1",
   "private": true,
-  "husky": {
-    "hooks": {
-      "commit":"cz",
-      "pre-commit": "lint-staged --allow-empty && yarn test:changed",
-      "pre-push": "yarn test",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
-    }
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix --quiet"
+    ]
   },
   "scripts": {
     "android": "react-native run-android",
@@ -17,15 +13,23 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
-    "commit": "git-cz"
+    "tcp": "adb reverse tcp:9090 tcp:9090"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.17.3",
     "@reduxjs/toolkit": "^1.8.1",
+    "eslint-import-resolver-typescript": "^2.7.1",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react-native-a11y": "^3.2.1",
+    "git": "^0.1.5",
+    "husky": "4.3.8",
+    "prettier": "^2.6.2",
     "react": "17.0.2",
     "react-native": "0.68.0",
     "react-redux": "^7.2.8",
-    "reactotron-redux": "^3.1.3"
+    "reactotron-redux": "^3.1.3",
+    "yarn": "^1.22.18"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
@@ -35,12 +39,14 @@
     "@react-native-community/eslint-config": "^2.0.0",
     "@types/react": "^17.0.43",
     "@types/react-native": "^0.67.3",
+    "@types/styled-components": "^5.1.25",
+    "axios": "^0.26.1",
     "babel-jest": "^26.6.3",
     "commitizen": "^4.2.4",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "^7.32.0",
-    "husky": "^7.0.4",
     "jest": "^26.6.3",
+    "lint-staged": "^12.3.7",
     "metro-react-native-babel-preset": "^0.67.0",
     "react-native-typescript-transformer": "^1.2.13",
     "react-test-renderer": "17.0.2",
@@ -48,6 +54,8 @@
     "reactotron-redux-saga": "^4.2.3",
     "redux-enhancer-react-native-appstate": "^0.3.1",
     "redux-saga": "^1.1.3",
+    "reselect": "^4.1.5",
+    "styled-components": "^5.3.5",
     "typescript": "^4.6.3"
   },
   "jest": {
