@@ -1,17 +1,25 @@
 import React from 'react';
-import { Container, PokemonTitle, PokemonImg } from './styles';
+import {
+	Container,
+	PokemonTitle,
+	PokemonImg,
+	PokemonTitleContainer,
+	PokedexNumber,
+} from './styles';
 
 interface PokemonItemProps {
 	name: string;
 	id: number;
 	url: string;
 }
-
-const PokemonItem: React.FC<PokemonItemProps> = ({ name, url }) => {
+const PokemonItem: React.FC<PokemonItemProps> = ({ id, name, url }) => {
 	return (
 		<Container>
-			<PokemonTitle>{name}</PokemonTitle>
+			<PokedexNumber>#{id}</PokedexNumber>
 			<PokemonImg source={{ uri: url }} />
+			<PokemonTitleContainer>
+				<PokemonTitle>{name}</PokemonTitle>
+			</PokemonTitleContainer>
 		</Container>
 	);
 };

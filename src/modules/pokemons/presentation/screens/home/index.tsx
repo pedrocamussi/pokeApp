@@ -46,6 +46,7 @@ const App = () => {
 				renderItem={renderPokemonItem}
 				keyExtractor={(item: Pokemon) => item.name}
 				onEndReached={onEndReachedPokemons}
+				numColumns={3}
 				onEndReachedThreshold={0.3}
 				refreshControl={
 					<RefreshControl
