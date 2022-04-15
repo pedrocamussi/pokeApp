@@ -1,4 +1,5 @@
 import React from 'react';
+import { formatPokemonId } from '../../utils/formatIdPokemon';
 import {
 	Container,
 	PokemonTitle,
@@ -22,7 +23,7 @@ const PokemonItem: React.FC<PokemonItemProps> = ({
 }) => {
 	return (
 		<Container onPress={onPress}>
-			<PokedexNumber>#{id}</PokedexNumber>
+			<PokedexNumber>{formatPokemonId(id)}</PokedexNumber>
 			<PokemonImg source={{ uri: url }} />
 			<PokemonTitleContainer>
 				<PokemonTitle>{name}</PokemonTitle>
