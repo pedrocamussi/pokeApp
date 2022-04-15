@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react';
-import { View } from 'react-native';
-import { useDispatch } from 'react-redux';
-import { PokemonActions } from './src/modules/pokemons/presentation/reducers/pokemons.reducers';
-import Home from './src/modules/pokemons/presentation/screens/home';
-
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import RouteStack from './src/modules/routes/routes';
 const App = () => {
-	return <Home />;
+	return (
+		<NavigationContainer>
+			<RouteStack />
+		</NavigationContainer>
+	);
 };
 
 export default App;

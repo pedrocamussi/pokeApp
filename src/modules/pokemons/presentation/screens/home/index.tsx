@@ -12,8 +12,9 @@ import {
 	getPokemonsPageAndLimit,
 } from '../../selectors/selector.pokemon';
 import { Pokemon } from '../../reducers/types';
+import { PokeAppScreen } from '../../../../routes/screens';
 
-const App = () => {
+const App = ({ navigation }) => {
 	const dispatch = useDispatch();
 	const pokemons: Pokemon[] = useSelector(getPokemons);
 	const loadingPokemons = useSelector(getPokemonsLoading);
@@ -24,12 +25,25 @@ const App = () => {
 		getPokemonsData(true);
 	}, []); //array de dependência, td q tiver dentro, forçará novamente o useEffect
 
+	const navigate = (screen, params) => {
+		navigation.navigate(screen, params);
+	};
+
 	const getPokemonsData = (reset = false) => {
 		dispatch(PokemonActions.getPokemons({ reset: reset }));
 	};
 
 	const renderPokemonItem = ({ item, index }: Pokemon) => {
-		return <PokemonItem name={item.name} url={item.img} id={item?.id} />;
+		return (
+			<PokemonItem
+				name={item.name}
+				url={item.img}
+				id={item?.id}
+				onPress={() =>
+					navigate(PokeAppScreen.PokemonDetails, { pokemon: item })
+				}
+			/>
+		);
 	};
 
 	const onEndReachedPokemons = () => {
@@ -46,6 +60,7 @@ const App = () => {
 				renderItem={renderPokemonItem}
 				keyExtractor={(item: Pokemon) => item.name}
 				onEndReached={onEndReachedPokemons}
+				numColumns={3}
 				onEndReachedThreshold={0.3}
 				refreshControl={
 					<RefreshControl
