@@ -98,3 +98,6 @@ android/app/src/main/assets/src/
 android/app/src/main/assets/images/
 android/app/src/main/assets/node_modules/
 
+android/.gradle/
+
+android/app/build/

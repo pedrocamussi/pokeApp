@@ -23,9 +23,17 @@ export default class PokemonService {
 		const { results } = response.data;
 		const pokemons = [];
 		for (pokemon of results) {
+			const {
+				color: { name: colorName },
+			} = await this.getPokemonSpeciesService({ name: pokemon.name });
 			const urlSplitted = pokemon.url.split('pokemon')[1];
 			const id = urlSplitted.replace(/[^a-zA-Z0-9]/g, '');
-			pokemons.push({ id, name: pokemon.name, img: formatImgUrl(id) });
+			pokemons.push({
+				id,
+				name: pokemon.name,
+				img: formatImgUrl(id),
+				color: colorName,
+			});
 		}
 		return pokemons;
 	}
@@ -33,5 +41,10 @@ export default class PokemonService {
 	async getPokemonIdService(params): Promise<PokemonResponseItem> {
 		const response = await this.api.getPokemonId(params);
 		return response;
+	}
+
+	async getPokemonSpeciesService(params): Promise<PokemonResponseItem> {
+		const response = await this.api.getPokemonSpecie(params);
+		return response.data;
 	}
 }
