@@ -5,11 +5,12 @@ interface PokemonItemProps {
 	name: string;
 	id: number;
 	url: string;
+	onPress: () => void;
 }
 
-const PokemonItem: React.FC<PokemonItemProps> = ({ name, url }) => {
+const PokemonItem: React.FC<PokemonItemProps> = ({ name, url, onPress }) => {
 	return (
-		<Container>
+		<Container onPress={onPress}>
 			<PokemonTitle>{name}</PokemonTitle>
 			<PokemonImg source={{ uri: url }} />
 		</Container>
