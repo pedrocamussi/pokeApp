@@ -11,10 +11,17 @@ interface PokemonItemProps {
 	name: string;
 	id: number;
 	url: string;
+	onPress: () => void;
 }
-const PokemonItem: React.FC<PokemonItemProps> = ({ id, name, url }) => {
+
+const PokemonItem: React.FC<PokemonItemProps> = ({
+	name,
+	url,
+	id,
+	onPress,
+}) => {
 	return (
-		<Container>
+		<Container onPress={onPress}>
 			<PokedexNumber>#{id}</PokedexNumber>
 			<PokemonImg source={{ uri: url }} />
 			<PokemonTitleContainer>

@@ -4,7 +4,7 @@ import { Image } from 'react-native';
 // const width = Dimensions.get('screen').width;
 // const height = Dimensions.get('screen').height;
 
-export const Container = styled.View`
+export const Container = styled.TouchableOpacity`
 	margin: 8px auto 8px auto;
 	width: 104px;
 	height: 112px;
