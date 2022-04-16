@@ -9,6 +9,7 @@ const initialState: initialStateType = {
 	canLoadMore: false,
 	page: 0,
 	limit: 20,
+	pokemonDetail: null,
 };
 
 const pokemonsSlice = createSlice({

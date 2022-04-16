@@ -28,4 +28,8 @@ export default class PokemonsApi {
 	): Promise<AxiosResponse<PokemonResponseDetailItem>> {
 		return await this.instance.get(`/pokemon/${params.name}`);
 	}
+
+	async getPokemonSpecie(params): Promise<AxiosResponse<any>> {
+		return await this.instance.get(`/pokemon-species/${params.name}`);
+	}
 }
