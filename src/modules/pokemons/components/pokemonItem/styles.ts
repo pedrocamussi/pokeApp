@@ -14,9 +14,12 @@ export const Container = styled.TouchableOpacity`
 `;
 
 export const PokedexNumber = styled.Text`
+	position: absolute;
 	font-size: 10px;
 	color: #74cb48;
 	font-weight: bold;
+	top: 5px;
+	right: 5px;
 `;
 export const PokemonImg = styled(Image)`
 	width: 90px;
