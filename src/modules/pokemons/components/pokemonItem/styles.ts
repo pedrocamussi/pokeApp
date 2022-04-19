@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 import { Image } from 'react-native';
-
+import colors from '../../utils/colors';
 // const width = Dimensions.get('screen').width;
 // const height = Dimensions.get('screen').height;
 
@@ -14,9 +14,12 @@ export const Container = styled.TouchableOpacity`
 `;
 
 export const PokedexNumber = styled.Text`
+	position: absolute;
 	font-size: 10px;
 	color: #74cb48;
 	font-weight: bold;
+	top: 5px;
+	right: 5px;
 `;
 export const PokemonImg = styled(Image)`
 	width: 90px;

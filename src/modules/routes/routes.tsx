@@ -25,7 +25,7 @@ const MyStack = () => {
 				tabBarInactiveTintColor: 'black',
 			})}>
 			<Tab.Screen
-				name={'Home'}
+				name={'HomeScreens'}
 				component={HomeScreens}
 				options={{ headerShown: false }}
 			/>
