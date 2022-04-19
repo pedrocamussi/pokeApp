@@ -1,4 +1,4 @@
-export interface initialStateType {
+export interface InitialStateType {
 	pokemons: Pokemon[];
 	loading: boolean;
 	error: boolean;
@@ -6,6 +6,7 @@ export interface initialStateType {
 	page: number;
 	canLoadMore: boolean;
 	limit: number;
+	pokemonDetails: Pokemon | null;
 }
 export interface Pokemon {
 	id: number;

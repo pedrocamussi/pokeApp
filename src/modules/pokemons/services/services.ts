@@ -1,4 +1,6 @@
+import pokemonsReducers from '../presentation/reducers/pokemons.reducers';
 import { formatImgUrl } from '../utils/formatImgUrl';
+import { objectToAray } from '../utils/objectToArray';
 import Api from './api';
 import { PokemonResponseItem } from './pokemon.types';
 
@@ -39,8 +41,20 @@ export default class PokemonService {
 	}
 
 	async getPokemonIdService(params): Promise<PokemonResponseItem> {
-		const response = await this.api.getPokemonId(params);
-		return response;
+		const { data } = await this.api.getPokemonId(params);
+		const imgsToArray = objectToAray(data.sprites);
+		const imgPokemon = imgsToArray.filter(image => image !== null);
+		const pokemon = {
+			abilities: data.abilities,
+			name: data.name,
+			height: data.height,
+			id: data.id,
+			images: imgPokemon,
+			stats: data.stats,
+			types: data.types,
+			weight: data.weight,
+		};
+		return pokemon;
 	}
 
 	async getPokemonSpeciesService(params): Promise<PokemonResponseItem> {

@@ -26,7 +26,7 @@ export default class PokemonsApi {
 	async getPokemonId(
 		params,
 	): Promise<AxiosResponse<PokemonResponseDetailItem>> {
-		return await this.instance.get(`/pokemon/${params.name}`);
+		return await this.instance.get(`/pokemon/${params.pokemonId}`);
 	}
 
 	async getPokemonSpecie(params): Promise<AxiosResponse<any>> {

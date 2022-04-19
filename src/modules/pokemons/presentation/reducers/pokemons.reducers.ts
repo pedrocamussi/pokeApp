@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { initialStateType, Pokemon } from './types';
+import { InitialStateType, Pokemon } from './types';
 
-const initialState: initialStateType = {
+const initialState: InitialStateType = {
 	pokemons: [],
 	loading: false,
 	error: false,
@@ -9,7 +9,7 @@ const initialState: initialStateType = {
 	canLoadMore: false,
 	page: 0,
 	limit: 20,
-	pokemonDetail: null,
+	pokemonDetails: null,
 };
 
 const pokemonsSlice = createSlice({
@@ -22,9 +22,10 @@ const pokemonsSlice = createSlice({
 		},
 		getPokemonSuccess: (
 			state,
-			{ payload }: PayloadAction<{ page: number; pokemons: Pokemon[] }>,
+			{ payload }: PayloadAction<{ pokemon: Pokemon }>,
 		) => {
 			state.loading = false;
+			state.pokemonDetails = payload.pokemon;
 		},
 		getPokemonFailed: (
 			state,
@@ -61,6 +62,9 @@ const pokemonsSlice = createSlice({
 			state.loading = false;
 			state.error = true;
 			state.errorDesc = errorDesc;
+		},
+		clearPokemon: state => {
+			state.pokemonDetails = null;
 		},
 		clearPokemons: state => {
 			state.pokemons = [];
