@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 import { Image } from 'react-native';
-
+import colors from '../../utils/colors';
 // const width = Dimensions.get('screen').width;
 // const height = Dimensions.get('screen').height;
 
