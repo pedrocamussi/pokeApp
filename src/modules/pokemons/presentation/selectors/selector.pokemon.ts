@@ -1,10 +1,14 @@
 import { createSelector } from 'reselect';
-import { initialStateType } from '../reducers/types';
+import { InitialStateType } from '../reducers/types';
 
 const pokemons = state => state.pokemons;
 
 export const getPokemons = createSelector(pokemons, state => state.pokemons);
 
+export const getPokemonDetails = createSelector(
+	pokemons,
+	state => state.pokemonDetails,
+);
 // export const getPokemons = (state: initialStateType) => {
 // 	return state.pokemons;
 // };
@@ -14,7 +18,7 @@ export const getPokemonsLoading = createSelector(
 	state => state.loading,
 );
 
-export const getPokemonsError = (state: initialStateType) => {
+export const getPokemonsError = (state: InitialStateType) => {
 	return state.error;
 };
 
