@@ -73,6 +73,13 @@ const pokemonsSlice = createSlice({
 			state.loading = false;
 			state.error = false;
 		},
+		setPokemonDetail: (
+			state,
+			{ payload }: PayloadAction<{ pokemon: Pokemon }>,
+		) => {
+			state.loading = false;
+			state.pokemonDetails = payload.pokemon;
+		},
 	},
 });
 

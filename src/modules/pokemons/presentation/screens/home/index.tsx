@@ -33,15 +33,19 @@ const App = ({ navigation }) => {
 		dispatch(PokemonActions.getPokemons({ reset: reset }));
 	};
 
+	const handleOnPressPokemon = pokemon => {
+		dispatch(PokemonActions.setPokemonDetail({ pokemon }));
+		navigate(PokeAppScreen.PokemonDetails, { pokemon });
+	};
+
 	const renderPokemonItem = ({ item, index }: Pokemon) => {
 		return (
 			<PokemonItem
 				name={item.name}
-				url={item.img}
+				url={item.images[0]}
 				id={item?.id}
-				onPress={() =>
-					navigate(PokeAppScreen.PokemonDetails, { pokemon: item })
-				}
+				types={item?.types}
+				onPress={() => handleOnPressPokemon(item)}
 			/>
 		);
 	};
