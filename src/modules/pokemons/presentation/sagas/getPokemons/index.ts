@@ -1,4 +1,4 @@
-import { put, select, delay } from 'redux-saga/effects';
+import { put, select } from 'redux-saga/effects';
 import pokemonsSlice, {
 	PokemonActions,
 } from '../../reducers/pokemons.reducers';
@@ -25,7 +25,6 @@ export function* getPokemons({ payload: { reset } }): any {
 			limit,
 			page: currentPage,
 		});
-		yield delay(500);
 		yield put(
 			PokemonActions.getPokemonsSuccess({
 				pokemons: response,

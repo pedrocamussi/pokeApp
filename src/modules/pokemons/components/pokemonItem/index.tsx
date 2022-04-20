@@ -7,25 +7,32 @@ import {
 	PokemonTitleContainer,
 	PokedexNumber,
 } from './styles';
+import { PokemonColors } from '../../utils/colors';
 
 interface PokemonItemProps {
 	name: string;
 	id: number;
 	url: string;
-	onPress: () => void;
+	types: any[];
+	onPress?: () => void;
 }
 
 const PokemonItem: React.FC<PokemonItemProps> = ({
 	name,
 	url,
 	id,
+	types,
 	onPress,
 }) => {
 	return (
-		<Container onPress={onPress}>
-			<PokedexNumber>{formatPokemonId(id)}</PokedexNumber>
+		<Container
+			onPress={onPress}
+			pokemonColor={PokemonColors[types[0].type.name]}>
+			<PokedexNumber pokemonColor={PokemonColors[types[0].type.name]}>
+				{formatPokemonId(id)}
+			</PokedexNumber>
 			<PokemonImg source={{ uri: url }} />
-			<PokemonTitleContainer>
+			<PokemonTitleContainer pokemonColor={PokemonColors[types[0].type.name]}>
 				<PokemonTitle>{name}</PokemonTitle>
 			</PokemonTitleContainer>
 		</Container>

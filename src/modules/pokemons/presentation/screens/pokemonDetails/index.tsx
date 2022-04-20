@@ -13,22 +13,10 @@ import { LoadingIndicator } from '../../../components/SpinnerSpaces/styles';
 const PokemonDetails = ({ route, navigation }) => {
 	const dispatch = useDispatch();
 	const pokemon = useSelector(getPokemonDetails);
-	const loading = useSelector(getPokemonsLoading);
-
-	useEffect(() => {
-		const {
-			params: { pokemon },
-		} = route;
-		dispatch(PokemonActions.getPokemon({ pokemonId: pokemon.id }));
-	}, []);
 
 	useEffect(() => {
 		return () => dispatch(PokemonActions.clearPokemon());
 	}, []);
-
-	useEffect(() => {
-		console.tron.log('loading', { loading });
-	}, [loading]);
 
 	const renderPokemon = () => {
 		if (pokemon)
@@ -37,17 +25,13 @@ const PokemonDetails = ({ route, navigation }) => {
 					name={pokemon?.name}
 					url={pokemon?.images[0]}
 					id={pokemon?.id}
+					types={pokemon?.types}
 				/>
 			);
 		return <></>;
 	};
 
-	return (
-		<Container>
-			{renderPokemon()}
-			{loading && <LoadingIndicator isVisible={loading} />}
-		</Container>
-	);
+	return <Container>{renderPokemon()}</Container>;
 };
 
 export default PokemonDetails;

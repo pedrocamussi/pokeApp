@@ -24,18 +24,27 @@ export default class PokemonService {
 		const response = await this.api.getPokemons(params);
 		const { results } = response.data;
 		const pokemons = [];
+		// for (pokemon of results) {
+		// 	const {
+		// 		color: { name: colorName },
+		// 	} = await this.getPokemonSpeciesService({ name: pokemon.name });
+		// 	const urlSplitted = pokemon.url.split('pokemon')[1];
+		// 	const id = urlSplitted.replace(/[^a-zA-Z0-9]/g, '');
+		// 	pokemons.push({
+		// 		id,
+		// 		name: pokemon.name,
+		// 		img: formatImgUrl(id),
+		// 		color: colorName,
+		// 	});
+		// }
 		for (pokemon of results) {
-			const {
-				color: { name: colorName },
-			} = await this.getPokemonSpeciesService({ name: pokemon.name });
+			console.tron.log('pokemon', pokemon);
 			const urlSplitted = pokemon.url.split('pokemon')[1];
 			const id = urlSplitted.replace(/[^a-zA-Z0-9]/g, '');
-			pokemons.push({
-				id,
-				name: pokemon.name,
-				img: formatImgUrl(id),
-				color: colorName,
+			const pokemonResponse = await this.getPokemonIdService({
+				pokemonId: id,
 			});
+			pokemons.push(pokemonResponse);
 		}
 		return pokemons;
 	}
@@ -44,12 +53,13 @@ export default class PokemonService {
 		const { data } = await this.api.getPokemonId(params);
 		const imgsToArray = objectToAray(data.sprites);
 		const imgPokemon = imgsToArray.filter(image => image !== null);
+		const imageDefault = formatImgUrl(params.pokemonId);
 		const pokemon = {
 			abilities: data.abilities,
 			name: data.name,
 			height: data.height,
 			id: data.id,
-			images: imgPokemon,
+			images: [imageDefault, ...imgPokemon],
 			stats: data.stats,
 			types: data.types,
 			weight: data.weight,

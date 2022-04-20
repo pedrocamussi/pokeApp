@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 import { Image } from 'react-native';
-import colors from '../../utils/colors';
+// import colors from '../../utils/colors';
 // const width = Dimensions.get('screen').width;
 // const height = Dimensions.get('screen').height;
 
@@ -10,13 +10,14 @@ export const Container = styled.TouchableOpacity`
 	height: 112px;
 	border-radius: 20px;
 	justify-content: center;
-	border: 2px solid #74cb48;
+	border-width: 2px;
+	border-color: ${({ pokemonColor }) =>
+		pokemonColor ? pokemonColor : `black`};
 `;
-
 export const PokedexNumber = styled.Text`
 	position: absolute;
 	font-size: 10px;
-	color: #74cb48;
+	color: ${({ pokemonColor }) => (pokemonColor ? pokemonColor : `black`)};
 	font-weight: bold;
 	top: 5px;
 	right: 5px;
@@ -27,15 +28,19 @@ export const PokemonImg = styled(Image)`
 	margin: 0 auto;
 `;
 export const PokemonTitleContainer = styled.View`
-	justify-content: center;
-	background-color: #74cb48;
+	background-color: ${({ pokemonColor }) =>
+		pokemonColor ? pokemonColor : `black`};
 	border-bottom-left-radius: 20px;
 	border-bottom-right-radius: 20px;
+	justify-content: center;
+	padding-bottom: 2px;
 `;
-export const PokemonTitle = styled.Text`
-	font-size: 14px;
+export const PokemonTitle = styled.Text.attrs({
+	underlineColorAndroid: 'black',
+})`
+	font-size: 10px;
+	line-height: 16px;
 	color: white;
 	text-transform: capitalize;
 	text-align: center;
-	font-weight: bold;
 `;
