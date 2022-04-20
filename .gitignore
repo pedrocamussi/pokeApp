@@ -68,10 +68,8 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
-android/play_store_api_token.json
 android/fastlane/.env
 ios/fastlane/.env
-ios/Spaces.app.dSYM.zip
 ios/vendor/*
 ios/.bundle
 
@@ -89,7 +87,6 @@ android/app/release/
 
 # Bundle
 ios/index.bundle
-ios/Gruvi/index.bundle
 android/app/src/main/assets/index.bundle
 
 # Assets
