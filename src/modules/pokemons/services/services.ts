@@ -54,6 +54,8 @@ export default class PokemonService {
 		const imgsToArray = objectToAray(data.sprites);
 		const imgPokemon = imgsToArray.filter(image => image !== null);
 		const imageDefault = formatImgUrl(params.pokemonId);
+		const urlSplitted = data.species.url.split('species')[1];
+		const id = urlSplitted.replace(/[^a-zA-Z0-9]/g, '');
 		const pokemon = {
 			abilities: data.abilities,
 			name: data.name,
@@ -63,12 +65,17 @@ export default class PokemonService {
 			stats: data.stats,
 			types: data.types,
 			weight: data.weight,
+			specieId: id,
 		};
 		return pokemon;
 	}
 
-	async getPokemonSpeciesService(params): Promise<PokemonResponseItem> {
+	async getPokemonSpecieService(params): Promise<PokemonResponseItem> {
 		const response = await this.api.getPokemonSpecie(params);
-		return response.data;
+		const specieArrayDescription = response.data.flavor_text_entries;
+		const specieArrayDescriptionFiltered = specieArrayDescription.filter(
+			text => text.language.name === 'en' && text.flavor_text,
+		);
+		return specieArrayDescriptionFiltered;
 	}
 }
