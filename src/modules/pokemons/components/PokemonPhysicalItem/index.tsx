@@ -1,13 +1,6 @@
 import React from 'react';
 
-import {
-	Container,
-	IconTextContainer,
-	IconContainer,
-	Title,
-	SubTitle,
-	Icon,
-} from './styles';
+import { Container, IconTextContainer, Title, SubTitle, Icon } from './styles';
 
 interface PokemonPhysicalItemProps {
 	physicalIcon?: any;

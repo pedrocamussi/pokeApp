@@ -13,15 +13,16 @@ export const IconTextContainer = styled.View`
 export const IconContainer = styled.View``;
 
 export const Title = styled.Text`
-	font-size: 10px;
+	font-size: 16px;
 	color: black;
 `;
 export const SubTitle = styled.Text`
-	font-size: 8px;
+	font-size: 12px;
 	color: black;
 `;
-export const Icon = styled(FontAwesome5Icon).attrs(nameTest => ({
-	nameTest: nameTest,
-	size: 16,
-	color: 'black',
+export const Icon = styled(FontAwesome5Icon).attrs(iconName => ({
+	iconName: iconName,
+	size: 32,
+	color: 'white',
+	border: 'black',
 }))``;

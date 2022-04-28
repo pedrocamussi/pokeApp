@@ -74,7 +74,10 @@ export default class PokemonService {
 		const response = await this.api.getPokemonSpecie(params);
 		const specieArrayDescription = response.data.flavor_text_entries;
 		const specieArrayDescriptionFiltered = specieArrayDescription.filter(
-			text => text.language.name === 'en' && text.flavor_text,
+			text =>
+				text.language.name === 'en' &&
+				text.flavor_text &&
+				text.version.name === 'firered',
 		);
 		return specieArrayDescriptionFiltered;
 	}

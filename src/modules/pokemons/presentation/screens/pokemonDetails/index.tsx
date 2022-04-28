@@ -33,16 +33,19 @@ const PokemonDetails = ({ route, navigation }) => {
 	// 		);
 	// 	return <></>;
 	// };
-
 	return (
 		<Container>
-			{pokemon && (
+			{pokemon.specie && (
 				<PokemonAbout
 					weight={pokemon.weight}
 					height={pokemon.height}
-					title="teste"
-					subtitle="teste"
+					title="About"
+					subtitle={pokemon.specie[0].flavor_text}
 					types={pokemon.types}
+					moves={[
+						pokemon.abilities[0].ability.name,
+						pokemon.abilities[1].ability.name,
+					]}
 				/>
 			)}
 			<LoadingIndicator isVisible={loadingPokemons} />

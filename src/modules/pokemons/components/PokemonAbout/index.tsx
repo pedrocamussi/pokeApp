@@ -1,13 +1,12 @@
 import React from 'react';
 import { PokemonColors } from '../../utils/colors';
 import PokemonPhysicalItem from '../PokemonPhysicalItem';
+import PokemonMoveItem from '../PokemonMoveItem';
 import {
 	AboutTitle,
 	Container,
 	PhysicalItemContainer,
 	AboutText,
-	WeightIcon,
-	HeightIcon,
 } from './styles';
 
 interface PokemonAboutProps {
@@ -18,6 +17,10 @@ interface PokemonAboutProps {
 	moves: any[];
 	types: any[];
 }
+
+// const getMoves = () => {
+// 	return <PokemonMoveItem moves={moves.map((item) => {})} />;
+// };
 
 const PokemonAbout: React.FC<PokemonAboutProps> = ({
 	title,
@@ -43,7 +46,7 @@ const PokemonAbout: React.FC<PokemonAboutProps> = ({
 					text={height}
 					subtext={'Height'}
 				/>
-				{/* <PokemonPhysicalItem text={(moves[0], moves[1])} subtext={'Moves'} /> */}
+				<PokemonMoveItem moves={moves} />
 			</PhysicalItemContainer>
 			<AboutText>{subtitle}</AboutText>
 		</Container>
