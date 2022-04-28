@@ -80,6 +80,27 @@ const pokemonsSlice = createSlice({
 			state.loading = false;
 			state.pokemonDetails = payload.pokemon;
 		},
+		getPokemonSpecie: (
+			state,
+			{ payload }: PayloadAction<{ pokemonId: number }>,
+		) => {
+			state.loading = true;
+		},
+		getPokemonSpecieSuccess: (
+			state,
+			{ payload }: PayloadAction<{ specie: any }>,
+		) => {
+			const { specie } = payload;
+			state.pokemonDetails = {
+				...state.pokemonDetails,
+				specie,
+			};
+			state.loading = false;
+		},
+		getPokemonSpecieFailed: state => {
+			state.loading = false;
+			state.error = true;
+		},
 	},
 });
 
