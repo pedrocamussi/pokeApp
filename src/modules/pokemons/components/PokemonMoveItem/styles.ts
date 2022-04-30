@@ -5,6 +5,7 @@ export const Container = styled.View`
 `;
 
 export const Text = styled.Text`
-	font-size: 16px;
+	font-size: 32px;
 	color: black;
+	background-color: red;
 `;

@@ -18,10 +18,6 @@ interface PokemonAboutProps {
 	types: any[];
 }
 
-// const getMoves = () => {
-// 	return <PokemonMoveItem moves={moves.map((item) => {})} />;
-// };
-
 const PokemonAbout: React.FC<PokemonAboutProps> = ({
 	title,
 	weight,
@@ -30,6 +26,11 @@ const PokemonAbout: React.FC<PokemonAboutProps> = ({
 	moves,
 	types,
 }) => {
+	const renderMoves = ({}) => {
+		moves.map(item => {
+			return <PokemonMoveItem moves={item} />;
+		});
+	};
 	return (
 		<Container>
 			<AboutTitle pokemonColor={PokemonColors[types[0].type.name]}>
@@ -46,7 +47,7 @@ const PokemonAbout: React.FC<PokemonAboutProps> = ({
 					text={height}
 					subtext={'Height'}
 				/>
-				<PokemonMoveItem moves={moves} />
+				{renderMoves({ moves })}
 			</PhysicalItemContainer>
 			<AboutText>{subtitle}</AboutText>
 		</Container>

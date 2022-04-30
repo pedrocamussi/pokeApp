@@ -23,6 +23,6 @@ export const SubTitle = styled.Text`
 export const Icon = styled(FontAwesome5Icon).attrs(iconName => ({
 	iconName: iconName,
 	size: 32,
-	color: 'white',
+	color: 'red',
 	border: 'black',
 }))``;
