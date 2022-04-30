@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Container } from './styles';
+import { Container, Button } from './styles';
 import PokemonItem from '../../../components/PokemonItem';
 import { Pokemon } from '../../reducers/types';
 import { useDispatch, useSelector } from 'react-redux';
@@ -42,12 +42,10 @@ const PokemonDetails = ({ route, navigation }) => {
 					title="About"
 					subtitle={pokemon.specie[0].flavor_text}
 					types={pokemon.types}
-					moves={[
-						pokemon.abilities[0].ability.name,
-						pokemon.abilities[1].ability.name,
-					]}
+					moves={pokemon.abilities}
 				/>
 			)}
+			<Button onPress={() => navigation.goBack()} />
 			<LoadingIndicator isVisible={loadingPokemons} />
 		</Container>
 	);

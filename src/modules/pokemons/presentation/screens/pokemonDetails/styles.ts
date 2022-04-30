@@ -8,3 +8,9 @@ export const Container = styled.View`
 `;
 
 export const PokemonsList = styled(FlatList)``;
+
+export const Button = styled.TouchableOpacity`
+	width: 50px;
+	height: 50px;
+	background-color: red;
+`;

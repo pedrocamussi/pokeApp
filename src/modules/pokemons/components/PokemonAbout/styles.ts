@@ -23,3 +23,5 @@ export const AboutText = styled.Text`
 	justify-content: center;
 	margin: 0 auto;
 `;
+
+export const MoveList = styled.FlatList``;

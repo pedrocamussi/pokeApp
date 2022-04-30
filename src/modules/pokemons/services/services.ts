@@ -38,7 +38,6 @@ export default class PokemonService {
 		// 	});
 		// }
 		for (pokemon of results) {
-			console.tron.log('pokemon', pokemon);
 			const urlSplitted = pokemon.url.split('pokemon')[1];
 			const id = urlSplitted.replace(/[^a-zA-Z0-9]/g, '');
 			const pokemonResponse = await this.getPokemonIdService({
