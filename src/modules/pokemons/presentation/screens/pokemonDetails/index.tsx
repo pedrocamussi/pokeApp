@@ -10,6 +10,14 @@ import {
 } from '../../selectors/selector.pokemon';
 import LoadingIndicator from '../../../components/LoadingCover';
 import PokemonAbout from '../../../components/PokemonAbout';
+import { PokemonColors } from '../../../utils/colors';
+
+interface PokemonDetailProps {
+	name: string;
+	id: number;
+	url: string;
+	types: any[];
+}
 
 const PokemonDetails = ({ route, navigation }) => {
 	const dispatch = useDispatch();
@@ -35,6 +43,7 @@ const PokemonDetails = ({ route, navigation }) => {
 	// };
 	return (
 		<Container>
+			<Button onPress={() => navigation.goBack()} />
 			{pokemon.specie && (
 				<PokemonAbout
 					weight={pokemon.weight}
@@ -45,7 +54,7 @@ const PokemonDetails = ({ route, navigation }) => {
 					moves={pokemon.abilities}
 				/>
 			)}
-			<Button onPress={() => navigation.goBack()} />
+
 			<LoadingIndicator isVisible={loadingPokemons} />
 		</Container>
 	);

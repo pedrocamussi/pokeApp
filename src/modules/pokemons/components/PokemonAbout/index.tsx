@@ -8,6 +8,8 @@ import {
 	PhysicalItemContainer,
 	AboutText,
 	MoveList,
+	Border,
+	MoveSubtitle,
 } from './styles';
 
 interface PokemonAboutProps {
@@ -41,11 +43,13 @@ const PokemonAbout: React.FC<PokemonAboutProps> = ({
 					text={weight}
 					subtext={'Weight'}
 				/>
+				<Border />
 				<PokemonPhysicalItem
 					physicalIcon="ruler-vertical"
 					text={height}
 					subtext={'Height'}
 				/>
+				<Border />
 				<MoveList
 					data={moves}
 					renderItem={renderMove}

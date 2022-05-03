@@ -16,7 +16,7 @@ const PokemonPhysicalItem: React.FC<PokemonPhysicalItemProps> = ({
 	return (
 		<Container>
 			<IconTextContainer>
-				<Icon name={physicalIcon} color={'red'} size={16} />
+				<Icon name={physicalIcon} color={'black'} />
 				<Title>{text}</Title>
 			</IconTextContainer>
 			<SubTitle>{subtext}</SubTitle>
