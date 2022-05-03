@@ -3,16 +3,15 @@ import React from 'react';
 import { Container, Text } from './styles';
 
 interface PokemonMoveItemProps {
-	moves: any[];
+	move: string;
 }
 
-const PokemonPhysicalItem: React.FC<PokemonMoveItemProps> = ({ moves }) => {
+const PokemonMoveItem: React.FC<PokemonMoveItemProps> = ({ move }) => {
 	return (
 		<Container>
-			<Text>{moves}</Text>
-			<Text>{moves}</Text>
+			<Text>{move}</Text>
 		</Container>
 	);
 };
 
-export default PokemonPhysicalItem;
+export default PokemonMoveItem;

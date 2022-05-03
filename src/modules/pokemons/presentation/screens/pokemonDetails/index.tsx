@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Container } from './styles';
+import { Container, Button } from './styles';
 import PokemonItem from '../../../components/PokemonItem';
 import { Pokemon } from '../../reducers/types';
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,6 +10,14 @@ import {
 } from '../../selectors/selector.pokemon';
 import LoadingIndicator from '../../../components/LoadingCover';
 import PokemonAbout from '../../../components/PokemonAbout';
+import { PokemonColors } from '../../../utils/colors';
+
+interface PokemonDetailProps {
+	name: string;
+	id: number;
+	url: string;
+	types: any[];
+}
 
 const PokemonDetails = ({ route, navigation }) => {
 	const dispatch = useDispatch();
@@ -35,6 +43,7 @@ const PokemonDetails = ({ route, navigation }) => {
 	// };
 	return (
 		<Container>
+			<Button onPress={() => navigation.goBack()} />
 			{pokemon.specie && (
 				<PokemonAbout
 					weight={pokemon.weight}
@@ -42,12 +51,10 @@ const PokemonDetails = ({ route, navigation }) => {
 					title="About"
 					subtitle={pokemon.specie[0].flavor_text}
 					types={pokemon.types}
-					moves={[
-						pokemon.abilities[0].ability.name,
-						pokemon.abilities[1].ability.name,
-					]}
+					moves={pokemon.abilities}
 				/>
 			)}
+
 			<LoadingIndicator isVisible={loadingPokemons} />
 		</Container>
 	);

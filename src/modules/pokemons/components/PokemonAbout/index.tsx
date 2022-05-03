@@ -7,6 +7,9 @@ import {
 	Container,
 	PhysicalItemContainer,
 	AboutText,
+	MoveList,
+	Border,
+	MoveSubtitle,
 } from './styles';
 
 interface PokemonAboutProps {
@@ -18,10 +21,6 @@ interface PokemonAboutProps {
 	types: any[];
 }
 
-// const getMoves = () => {
-// 	return <PokemonMoveItem moves={moves.map((item) => {})} />;
-// };
-
 const PokemonAbout: React.FC<PokemonAboutProps> = ({
 	title,
 	weight,
@@ -30,6 +29,9 @@ const PokemonAbout: React.FC<PokemonAboutProps> = ({
 	moves,
 	types,
 }) => {
+	const renderMove = ({ item }) => {
+		return <PokemonMoveItem move={item.ability.name} />;
+	};
 	return (
 		<Container>
 			<AboutTitle pokemonColor={PokemonColors[types[0].type.name]}>
@@ -41,12 +43,18 @@ const PokemonAbout: React.FC<PokemonAboutProps> = ({
 					text={weight}
 					subtext={'Weight'}
 				/>
+				<Border />
 				<PokemonPhysicalItem
 					physicalIcon="ruler-vertical"
 					text={height}
 					subtext={'Height'}
 				/>
-				<PokemonMoveItem moves={moves} />
+				<Border />
+				<MoveList
+					data={moves}
+					renderItem={renderMove}
+					keyExtractor={item => item.ability.name}
+				/>
 			</PhysicalItemContainer>
 			<AboutText>{subtitle}</AboutText>
 		</Container>
