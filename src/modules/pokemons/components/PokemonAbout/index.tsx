@@ -11,6 +11,7 @@ import {
 	Border,
 	MoveSubtitle,
 } from './styles';
+import { SubTitle } from '../PokemonPhysicalItem/styles';
 
 interface PokemonAboutProps {
 	title: string;
@@ -57,6 +58,9 @@ const PokemonAbout: React.FC<PokemonAboutProps> = ({
 				/>
 			</PhysicalItemContainer>
 			<AboutText>{subtitle}</AboutText>
+			<AboutTitle pokemonColor={PokemonColors[types[0].type.name]}>
+				{title}
+			</AboutTitle>
 		</Container>
 	);
 };
