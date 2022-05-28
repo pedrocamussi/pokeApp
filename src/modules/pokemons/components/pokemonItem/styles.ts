@@ -5,6 +5,7 @@ import { Image } from 'react-native';
 // const height = Dimensions.get('screen').height;
 
 export const Container = styled.TouchableOpacity`
+	display: flex;
 	margin: 8px auto 8px auto;
 	width: 104px;
 	height: 112px;
@@ -25,7 +26,6 @@ export const PokedexNumber = styled.Text`
 export const PokemonImg = styled(Image)`
 	width: 90px;
 	height: 90px;
-	margin: 0 auto;
 `;
 export const PokemonTitleContainer = styled.View`
 	background-color: ${({ pokemonColor }) =>

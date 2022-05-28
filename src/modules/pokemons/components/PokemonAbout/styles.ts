@@ -5,19 +5,22 @@ export const Container = styled.View`
 	justify-content: center;
 	background: white;
 	width: 95%;
+	display: flex;
+	align-items: center;
 `;
 export const AboutTitle = styled.Text`
 	font-size: 16px;
 	line-height: 16px;
 	color: ${({ pokemonColor }) => (pokemonColor ? pokemonColor : `black`)};
-	margin: 0 auto;
 	font-weight: bold;
 `;
 export const PhysicalItemContainer = styled.View`
-	margin: 0px auto;
+	display: flex;
 	flex-direction: row;
 	height: 120px;
 	width: 300px;
+	justify-content: center;
+	align-items: center;
 `;
 export const AboutText = styled.Text`
 	color: black;
@@ -29,8 +32,6 @@ export const AboutText = styled.Text`
 export const MoveList = styled.FlatList`
 	width: 100px;
 	height: auto;
-	margin: 0 auto;
-	background: black;
 `;
 export const Border = styled.View`
 	height: 90%;
