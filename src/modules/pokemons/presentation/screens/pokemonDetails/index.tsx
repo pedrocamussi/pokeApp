@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Button } from './styles';
 import PokemonItem from '../../../components/PokemonItem';
 import { Pokemon } from '../../reducers/types';
@@ -49,7 +49,7 @@ const PokemonDetails = ({ route, navigation }) => {
 					weight={pokemon.weight}
 					height={pokemon.height}
 					title="About"
-					subtitle={pokemon.specie[0].flavor_text}
+					subtitle={pokemon.specie?.[0].flavor_text}
 					types={pokemon.types}
 					moves={pokemon.abilities}
 				/>

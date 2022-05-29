@@ -5,14 +5,9 @@ import Reactotron from './reactotron.config';
 import applyAppStateListener from 'redux-enhancer-react-native-appstate';
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from './src/modules/pokemons/presentation/sagas/index';
+import { getPersistedReducer, getPersistor } from './persist';
 
 type GlobalReducer = 'pokemons';
-
-export const store2 = configureStore({
-	reducer: {
-		pokemons: PokemonsSlice,
-	},
-});
 
 const sagaMonitor = Reactotron.createSagaMonitor();
 const sagaMiddleware = createSagaMiddleware({ sagaMonitor });
@@ -21,13 +16,14 @@ const rootReducer: Record<GlobalReducer, Reducer<any, any>> = {
 	pokemons: PokemonsSlice,
 };
 export const store = createStore(
-	combineReducers(rootReducer),
+	getPersistedReducer(combineReducers(rootReducer)),
 	compose(
 		applyAppStateListener(),
 		Reactotron.createEnhancer(),
 		applyMiddleware(sagaMiddleware),
 	),
 );
+export const persistor = getPersistor(store);
 
 sagaMiddleware.run(rootSaga);
 // Infer the `RootState` and `AppDispatch` types from the store itself
