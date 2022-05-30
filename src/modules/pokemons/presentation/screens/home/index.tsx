@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { RefreshControl, Text, View } from 'react-native';
 import { Container, PokemonsList } from './styles';
-import PokemonItem from '../../../components/PokemonItem';
+import PokemonItem from '../../../components/pokemonItem';
 import LoadingIndicator from '../../../components/LoadingCover';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -22,7 +22,7 @@ const App = ({ navigation }) => {
 	const { canLoadMore } = useSelector(getPokemonsPageAndLimit);
 
 	useEffect(() => {
-		getPokemonsData(true);
+		getPokemonsData(false);
 	}, []); //array de dependência, td q tiver dentro, forçará novamente o useEffect
 
 	const navigate = (screen, params) => {
