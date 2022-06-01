@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 import { InitialStateType } from '../reducers/types';
 
-const pokemons = state => state.pokemons;
+const pokemons = (state: { pokemons: any }) => state.pokemons;
 
 export const getPokemons = createSelector(pokemons, state => state.pokemons);
 
@@ -26,7 +26,7 @@ export const getPokemonId = (pokemonId: number) =>
 	createSelector(state, state => {
 		const pokemons = state.pokemons;
 		const pokemonFiltered = pokemons.filter(
-			pokemon => pokemon.id === pokemonId,
+			(pokemon: { id: number }) => pokemon.id === pokemonId,
 		);
 		if (pokemonFiltered?.length) return pokemonFiltered[0];
 		return null;

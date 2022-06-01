@@ -12,13 +12,13 @@ const HomeScreens = () => {
 			<Stack.Screen
 				name="Home"
 				component={Home}
-				options={{ title: 'Welcome' }}
+				options={{ title: 'Pokédex' }}
 			/>
 			<Stack.Screen
 				name="PokemonDetails"
 				component={PokemonDetails}
 				options={{
-					title: 'Detalhes do pokemon',
+					headerShown: false,
 				}}
 			/>
 		</Stack.Navigator>

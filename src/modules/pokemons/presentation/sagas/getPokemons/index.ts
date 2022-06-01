@@ -12,6 +12,7 @@ export function* getPokemons({ payload: { reset } }): any {
 		let currentPage = page;
 
 		if (reset) {
+			// acessa a primeira vez da tela e quando realizado o pull to refresh
 			yield put(PokemonActions.clearPokemons());
 			currentPage = 0;
 		}

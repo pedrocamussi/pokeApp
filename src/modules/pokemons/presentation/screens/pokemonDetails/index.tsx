@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Button } from './styles';
+import { Container } from './styles';
 import PokemonItem from '../../../components/PokemonItem';
 import { Pokemon } from '../../reducers/types';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,6 +11,7 @@ import {
 import LoadingIndicator from '../../../components/LoadingCover';
 import PokemonAbout from '../../../components/PokemonAbout';
 import { PokemonColors } from '../../../utils/colors';
+import HeaderDetails from '../../../components/HeaderDetails';
 
 interface PokemonDetailProps {
 	name: string;
@@ -29,21 +30,9 @@ const PokemonDetails = ({ route, navigation }) => {
 		return () => dispatch(PokemonActions.clearPokemon());
 	}, []);
 
-	// const renderPokemon = () => {
-	// 	if (pokemon)
-	// 		return (
-	// 			<PokemonItem
-	// 				name={pokemon?.name}
-	// 				url={pokemon?.images[0]}
-	// 				id={pokemon?.id}
-	// 				types={pokemon?.types}
-	// 			/>
-	// 		);
-	// 	return <></>;
-	// };
 	return (
 		<Container>
-			<Button onPress={() => navigation.goBack()} />
+			<HeaderDetails id={pokemon.id} name={pokemon.name} />
 			{pokemon.specie && (
 				<PokemonAbout
 					weight={pokemon.weight}
