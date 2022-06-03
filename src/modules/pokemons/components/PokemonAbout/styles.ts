@@ -1,4 +1,3 @@
-import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
@@ -7,6 +6,8 @@ export const Container = styled.View`
 	width: 95%;
 	display: flex;
 	align-items: center;
+	border-radius: 8px;
+	flex: 1;
 `;
 export const AboutTitle = styled.Text`
 	font-size: 16px;
@@ -15,7 +16,6 @@ export const AboutTitle = styled.Text`
 	font-weight: bold;
 `;
 export const PhysicalItemContainer = styled.View`
-	display: flex;
 	flex-direction: row;
 	height: 120px;
 	width: 300px;

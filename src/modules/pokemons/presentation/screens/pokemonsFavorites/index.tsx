@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container } from './styles';
-import PokemonItem from '../../../components/pokemonItem';
+import PokemonItem from '../../../components/PokemonItem';
 import { Pokemon } from '../../reducers/types';
 
 const PokemonFavorites = ({ route, navigation }) => {

@@ -9,12 +9,10 @@ import {
 	AboutText,
 	MoveList,
 	Border,
-	MoveSubtitle,
 } from './styles';
 import { SubTitle } from '../PokemonPhysicalItem/styles';
 
 interface PokemonAboutProps {
-	title: string;
 	weight: string;
 	height: string;
 	subtitle: string;
@@ -23,7 +21,6 @@ interface PokemonAboutProps {
 }
 
 const PokemonAbout: React.FC<PokemonAboutProps> = ({
-	title,
 	weight,
 	height,
 	subtitle,
@@ -36,7 +33,7 @@ const PokemonAbout: React.FC<PokemonAboutProps> = ({
 	return (
 		<Container>
 			<AboutTitle pokemonColor={PokemonColors[types[0].type.name]}>
-				{title}
+				About
 			</AboutTitle>
 			<PhysicalItemContainer>
 				<PokemonPhysicalItem
@@ -59,7 +56,7 @@ const PokemonAbout: React.FC<PokemonAboutProps> = ({
 			</PhysicalItemContainer>
 			<AboutText>{subtitle}</AboutText>
 			<AboutTitle pokemonColor={PokemonColors[types[0].type.name]}>
-				{title}
+				Base Stats
 			</AboutTitle>
 		</Container>
 	);

@@ -8,7 +8,7 @@ const initialState: InitialStateType = {
 	errorDesc: '',
 	canLoadMore: false,
 	page: 0,
-	limit: 20,
+	limit: 21,
 	pokemonDetails: null,
 };
 
