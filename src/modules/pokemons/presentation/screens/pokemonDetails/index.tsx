@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container } from './styles';
+import { Container, ImgContainer } from './styles';
 import PokemonItem from '../../../components/PokemonItem';
 import { Pokemon } from '../../reducers/types';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,10 +8,12 @@ import {
 	getPokemonDetails,
 	getPokemonsLoading,
 } from '../../selectors/selector.pokemon';
-import LoadingIndicator from '../../../components/LoadingCover';
-import PokemonAbout from '../../../components/PokemonAbout';
+
 import { PokemonColors } from '../../../utils/colors';
+
 import HeaderDetails from '../../../components/HeaderDetails';
+import PokemonAbout from '../../../components/PokemonAbout';
+import LoadingIndicator from '../../../components/LoadingCover';
 
 interface PokemonDetailProps {
 	name: string;
@@ -20,7 +22,10 @@ interface PokemonDetailProps {
 	types: any[];
 }
 
-const PokemonDetails = ({ route, navigation }) => {
+const PokemonDetails: React.FC<PokemonDetailProps> = ({
+	route,
+	navigation,
+}) => {
 	const dispatch = useDispatch();
 	const pokemon = useSelector(getPokemonDetails);
 	const loadingPokemons = useSelector(getPokemonsLoading);
@@ -31,13 +36,17 @@ const PokemonDetails = ({ route, navigation }) => {
 	}, []);
 
 	return (
-		<Container>
-			<HeaderDetails id={pokemon.id} name={pokemon.name} />
+		<Container pokemonColor={PokemonColors[pokemon.types[0].type.name]}>
+			<HeaderDetails
+				id={pokemon.id}
+				name={pokemon.name}
+				url={pokemon.images[0]}
+				onPress={() => navigation.goBack()}
+			/>
 			{pokemon.specie && (
 				<PokemonAbout
 					weight={pokemon.weight}
 					height={pokemon.height}
-					title="About"
 					subtitle={pokemon.specie?.[0].flavor_text}
 					types={pokemon.types}
 					moves={pokemon.abilities}

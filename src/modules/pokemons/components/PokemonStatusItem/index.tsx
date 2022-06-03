@@ -5,7 +5,6 @@ interface PokemonStatusItem {
 	id: number;
 	url: string;
 	types: any[];
-	onPress?: () => void;
 }
 
 const PokemonStatusItem: React.FC<PokemonStatusItem> = ({
@@ -13,14 +12,14 @@ const PokemonStatusItem: React.FC<PokemonStatusItem> = ({
 	url,
 	id,
 	types,
-	onPress,
 }) => {
 	return (
-		// <Container>
-		// 	<Text />
-		// 	<Text />
-		// 	<View />
-		// </Container>
+		<Container>
+			// <Text />
+			// <Text />
+			// <View />
+			//{' '}
+		</Container>
 	);
 };
 
