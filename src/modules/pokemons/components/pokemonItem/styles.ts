@@ -44,3 +44,14 @@ export const PokemonTitle = styled.Text.attrs({
 	text-transform: capitalize;
 	text-align: center;
 `;
+
+export const TogglePokemon = styled.TouchableOpacity`
+	width: 20px;
+	height: 20px;
+	background-color: red;
+`;
+
+export const TogglePokemonText = styled.Text`
+	font-size: 15px;
+	color: white;
+`;

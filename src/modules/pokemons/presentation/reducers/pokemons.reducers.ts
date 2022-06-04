@@ -6,10 +6,11 @@ const initialState: InitialStateType = {
 	loading: false,
 	error: false,
 	errorDesc: '',
-	canLoadMore: false,
+	canLoadMore: true,
 	page: 0,
 	limit: 21,
 	pokemonDetails: null,
+	favorites: {},
 };
 
 const pokemonsSlice = createSlice({
@@ -100,6 +101,19 @@ const pokemonsSlice = createSlice({
 		getPokemonSpecieFailed: state => {
 			state.loading = false;
 			state.error = true;
+		},
+		togglePokemonFavorite: (
+			state,
+			{ payload }: PayloadAction<{ pokemon: Pokemon }>,
+		) => {
+			const { pokemon } = payload;
+			if (state.favorites && state.favorites[pokemon.id])
+				delete state.favorites[pokemon.id];
+			else
+				state.favorites = {
+					...state.favorites,
+					[pokemon.id]: pokemon,
+				};
 		},
 	},
 });

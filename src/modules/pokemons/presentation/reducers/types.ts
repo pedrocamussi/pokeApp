@@ -7,6 +7,7 @@ export interface InitialStateType {
 	canLoadMore: boolean;
 	limit: number;
 	pokemonDetails: Pokemon | null;
+	favorites: null | any;
 }
 export interface Pokemon {
 	id: number;
