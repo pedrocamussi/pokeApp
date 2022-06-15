@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
 import { Image } from 'react-native';
+import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
 // import colors from '../../utils/colors';
 // const width = Dimensions.get('screen').width;
 // const height = Dimensions.get('screen').height;
@@ -46,12 +47,21 @@ export const PokemonTitle = styled.Text.attrs({
 `;
 
 export const TogglePokemon = styled.TouchableOpacity`
-	width: 20px;
-	height: 20px;
+	width: 30px;
+	height: 30px;
+	border-radius: 50px;
+
 	background-color: red;
+
+	justify-content: center;
+	align-items: center;
+
+	position: absolute;
+	top: 85px;
+	left: 75px;
 `;
 
-export const TogglePokemonText = styled.Text`
-	font-size: 15px;
+export const TogglePokemonIcon = styled(FontAwesome5Icon)`
+	font-size: 16px;
 	color: white;
 `;

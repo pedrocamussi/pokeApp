@@ -7,7 +7,8 @@ import {
 	PokemonTitleContainer,
 	PokedexNumber,
 	TogglePokemon,
-	TogglePokemonText,
+	TogglePokemonIcon,
+	FavoriteButtonContainer,
 } from './styles';
 import { PokemonColors } from '../../utils/colors';
 import { Pokemon } from '../../presentation/reducers/types';
@@ -43,10 +44,10 @@ const PokemonItem: React.FC<PokemonItemProps> = ({
 				<PokemonTitleContainer pokemonColor={PokemonColors[types[0].type.name]}>
 					<PokemonTitle>{name}</PokemonTitle>
 				</PokemonTitleContainer>
+				<TogglePokemon onPress={toggleFavorite}>
+					<TogglePokemonIcon name={isFavorited ? 'heart-broken' : 'heart'} />
+				</TogglePokemon>
 			</Container>
-			<TogglePokemon onPress={toggleFavorite}>
-				<TogglePokemonText>{isFavorited ? 'N' : 'S'}</TogglePokemonText>
-			</TogglePokemon>
 		</>
 	);
 };
