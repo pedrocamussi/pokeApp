@@ -39,3 +39,6 @@ export const getPokemonsPageAndLimit = createSelector(pokemons, state => {
 		canLoadMore: state?.canLoadMore,
 	};
 });
+export const getPokemonsFavorites = createSelector(pokemons, state => {
+	return state.favorites ? state.favorites : {};
+});

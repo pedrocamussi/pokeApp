@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { PokemonActions } from '../../reducers/pokemons.reducers';
 import {
 	getPokemons,
+	getPokemonsFavorites,
 	getPokemonsLoading,
 	getPokemonsPageAndLimit,
 } from '../../selectors/selector.pokemon';
@@ -18,11 +19,12 @@ const App = ({ navigation }) => {
 	const dispatch = useDispatch();
 	const pokemons: Pokemon[] = useSelector(getPokemons);
 	const loadingPokemons = useSelector(getPokemonsLoading);
+	const pokemonsFavorites = useSelector(getPokemonsFavorites);
 
 	const { canLoadMore } = useSelector(getPokemonsPageAndLimit);
 
 	useEffect(() => {
-		getPokemonsData(true);
+		getPokemonsData(false);
 	}, []); //array de dependência, td q tiver dentro, forçará novamente o useEffect
 
 	const navigate = (screen, params) => {
@@ -38,6 +40,8 @@ const App = ({ navigation }) => {
 		navigate(PokeAppScreen.PokemonDetails, { pokemon });
 	};
 
+	const toggleFavoritePokemon = (pokemon: Pokemon) =>
+		dispatch(PokemonActions.togglePokemonFavorite({ pokemon }));
 	const renderPokemonItem = ({ item, index }: Pokemon) => {
 		return (
 			<PokemonItem
@@ -46,6 +50,8 @@ const App = ({ navigation }) => {
 				id={item?.id}
 				types={item?.types}
 				onPress={() => handleOnPressPokemon(item)}
+				isFavorited={pokemonsFavorites ? pokemonsFavorites[item.id] : false}
+				toggleFavorite={() => toggleFavoritePokemon(item)}
 			/>
 		);
 	};
@@ -71,8 +77,15 @@ const App = ({ navigation }) => {
 						colors={['blue']}
 						tintColor={'blue'}
 						refreshing={false}
-						onRefresh={() => getPokemonsData(false)}
+						onRefresh={() => getPokemonsData(true)}
 					/>
+				}
+				ListFooterComponent={
+					loadingPokemons ? (
+						<View style={{ padding: 20 }}>
+							<LoadingIndicator isVisible={loadingPokemons} />
+						</View>
+					) : null
 				}
 			/>
 		);
@@ -81,7 +94,9 @@ const App = ({ navigation }) => {
 	return (
 		<Container>
 			{renderList()}
-			<LoadingIndicator isVisible={loadingPokemons} />
+			{pokemons?.length === 0 && (
+				<LoadingIndicator isVisible={loadingPokemons} />
+			)}
 		</Container>
 	);
 };
